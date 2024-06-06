@@ -26,17 +26,20 @@ export default function Masonic({ongetInfo}) {
     const info = (
         <>
             <p>
-BCD (Binary-Coded Decimal) encoding is a binary representation of decimal numbers where each decimal digit is represented by a fixed number of binary digits.
-</p>
-<p>
-To encode using BCD encoding, each decimal digit of the plaintext number is represented by its corresponding four-digit binary code.
-</p>
-<ul>
-<li>Binary-Coded Decimal: Each decimal digit is represented by a fixed number of binary digits, typically four binary digits per decimal digit.</li>
-<li>Encoding Scheme: BCD encoding represents each decimal digit using its binary equivalent, ensuring efficient storage and manipulation of decimal numbers in digital systems.</li>
-<li>Decimal to Binary: Each decimal digit is converted to its binary equivalent using a fixed mapping.</li>
-<li>Example: The decimal number 123 might be encoded as "0001 0010 0011" in BCD, where each group of four binary digits represents one decimal digit.</li>
-</ul>
+                The Masonic Cipher, also known as the Freemason's Cipher or Pigpen Cipher, is a substitution cipher used by the Freemasons for various purposes.
+                It replaces each letter in the plaintext with a symbol based on a grid of lines and dots, forming a geometric shape.
+            </p>
+            <p>
+                To encrypt using the Masonic Cipher, you need to memorize the symbol grid or have a key to reference.
+                Each letter in the plaintext is replaced with its corresponding symbol according to the Masonic symbol grid.
+            </p>
+            <ul>
+                <li>Substitution Cipher: Each letter is replaced with a symbol from the Masonic symbol grid.</li>
+                <li>Masonic Symbol Grid: The grid consists of lines and dots forming geometric shapes representing each letter of the alphabet.</li>
+                <li>Encryption: To encrypt, replace each letter with its corresponding symbol from the Masonic symbol grid.</li>
+                <li>Decryption: Decryption involves reversing the substitution, replacing each symbol with its corresponding letter.</li>
+                <li>Example: 'HELLO' might be encrypted as '⊔∴∴⊓ ⊓∷⊓⊔' using the Masonic Cipher.</li>
+            </ul>
         </>
     );
     ongetInfo(info);

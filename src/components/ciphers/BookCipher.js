@@ -55,24 +55,25 @@ function decode(ciphertext, key) {
 
 const showInformation = () => {
   const info = (
-      <>
-          <p>
-The Beaufort Cipher is a variant of the Vigenère cipher, employing a reversed alphabet key to encrypt and decrypt messages.
-</p>
-<p>
-To encrypt using the Beaufort Cipher, each character of the plaintext is combined with a character from the key to produce the ciphertext.
-</p>
-<ul>
-<li>Substitution Cipher: The Beaufort Cipher substitutes each plaintext character with a character determined by a combination of the plaintext and the key.</li>
-<li>Key Length: Similar to the Vigenère cipher, the key length in the Beaufort Cipher matches the length of the plaintext.</li>
-<li>Encryption: To encrypt, each character in the plaintext is combined with a character from the key using a mathematical operation, typically modular subtraction or reversing the alphabet.</li>
-<li>Decryption: Decryption in the Beaufort Cipher involves reversing the encryption process by subtracting the key character from the ciphertext character to retrieve the plaintext character.</li>
-<li>Example: For instance, using a key 'KEY', if 'H' in the plaintext is combined with 'K' from the key, the resulting ciphertext character might be 'S'.</li>
-</ul>
-
-      </>
-  );
-  ongetInfo(info);
+    <>
+        <p>
+            The Book Cipher is a cryptographic technique that uses a book or other texts as the key for encoding and decoding messages.
+            It operates by turning each letter in the plaintext into a set of coordinates within the chosen book.
+        </p>
+        <p>
+            To encrypt using the Book Cipher, you need a key text (such as a book) that both the sender and receiver possess.
+            Each word or phrase in the plaintext is encoded as a pair of numbers representing a page number and a position within that page.
+        </p>
+        <ul>
+            <li>Book Key: The book serves as the key for the cipher, providing the mapping between letters and coordinates.</li>
+            <li>Coordinates: Each letter in the plaintext is represented by a page number and a position within that page.</li>
+            <li>Encryption: To encrypt, look up each letter in the book and encode its position as a set of coordinates.</li>
+            <li>Decryption: Decryption involves reversing the process, using the book to look up the coordinates and retrieve the corresponding letters.</li>
+            <li>Example: With the book 'Alice in Wonderland' and plaintext 'SECRET', you might encode it as '12-4 15-8 6-12 17-9 5-3 20-1'.</li>
+        </ul>
+    </>
+);
+ongetInfo(info);
 };
 
 React.useEffect(() => {

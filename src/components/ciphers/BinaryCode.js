@@ -19,22 +19,23 @@ export default function BinaryCode({ ongetInfo }) {
         const info = (
             <>
                 <p>
-    The Beaufort Cipher is a variant of the Vigenère cipher, employing a reversed alphabet key to encrypt and decrypt messages.
-</p>
-<p>
-    To encrypt using the Beaufort Cipher, each character of the plaintext is combined with a character from the key to produce the ciphertext.
-</p>
-<ul>
-    <li>Substitution Cipher: The Beaufort Cipher substitutes each plaintext character with a character determined by a combination of the plaintext and the key.</li>
-    <li>Key Length: Similar to the Vigenère cipher, the key length in the Beaufort Cipher matches the length of the plaintext.</li>
-    <li>Encryption: To encrypt, each character in the plaintext is combined with a character from the key using a mathematical operation, typically modular subtraction or reversing the alphabet.</li>
-    <li>Decryption: Decryption in the Beaufort Cipher involves reversing the encryption process by subtracting the key character from the ciphertext character to retrieve the plaintext character.</li>
-    <li>Example: For instance, using a key 'KEY', if 'H' in the plaintext is combined with 'K' from the key, the resulting ciphertext character might be 'S'.</li>
-</ul>
-
+                    The Binary Code Cipher is a simple encoding method where each character in the plaintext is converted to its binary representation.
+                    This cipher is commonly used in digital systems and computer communications.
+                </p>
+                <p>
+                    To encrypt using the Binary Code Cipher, each character of your text is translated into an 8-bit binary sequence.
+                </p>
+                <ul>
+                    <li>Encoding Method: Each character in the plaintext is represented by its corresponding binary value.</li>
+                    <li>Binary Representation: Binary (base-2) uses only the digits 0 and 1 to represent data.</li>
+                    <li>Encryption: To encrypt, convert each character in the plaintext to its binary value using an 8-bit representation.</li>
+                    <li>Decryption: Decryption involves converting each binary sequence back to its corresponding character.</li>
+                    <li>Example: The character 'A' becomes '01000001', 'B' becomes '01000010', 'C' becomes '01000011', and so forth.</li>
+                </ul>
             </>
         );
         ongetInfo(info);
+    
     };
 
     React.useEffect(() => {

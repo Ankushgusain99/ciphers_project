@@ -76,18 +76,21 @@ export default function BifidCipher({ ongetInfo }) {
         const info = (
             <>
                 <p>
-    The Autokey Cipher is a substitution cipher that extends the Vigenère cipher. It utilizes a key that is as long as the plaintext, making it a polyalphabetic substitution cipher.
-</p>
-<p>
-    To encrypt using the Autokey Cipher, each character of the plaintext is combined with a character from the key to produce the ciphertext.
-</p>
-<ul>
-    <li>Substitution Cipher: Each character in the plaintext is replaced by a character derived from a combination of the plaintext and the key.</li>
-    <li>Key Length: The key used in the Autokey Cipher is as long as the plaintext, extending the Vigenère cipher's key.</li>
-    <li>Encryption: To encrypt, each character in the plaintext is combined with a character from the key using a mathematical operation, typically modular addition.</li>
-    <li>Decryption: Decryption involves reversing the encryption process, subtracting the key character from the ciphertext character to retrieve the plaintext character.</li>
-    <li>Example: Using a key 'KEY', if 'H' in the plaintext is combined with 'K' from the key, the resulting ciphertext character might be 'S'.</li>
-</ul>
+                    The Bifid Cipher is a classical cipher that combines the Polybius square with transposition and fractionation. 
+                    It was invented by Felix Delastelle and is known for its complexity and strength compared to other classical ciphers.
+                </p>
+                <p>
+                    To encrypt using the Bifid Cipher, the plaintext is first converted into coordinates using a Polybius square. 
+                    These coordinates are then split and rearranged before being mapped back to letters.
+                </p>
+                <ul>
+                    <li>Polybius Square: A 5x5 grid filled with letters of the alphabet (I and J are often combined).</li>
+                    <li>Coordinates: Each letter in the plaintext is converted to its corresponding row and column numbers in the Polybius square.</li>
+                    <li>Transposition: The coordinates are then split into two separate groups (rows and columns) and rearranged.</li>
+                    <li>Encryption: The rearranged coordinates are converted back to letters using the Polybius square.</li>
+                    <li>Decryption: Decryption involves reversing the process by converting letters to coordinates, splitting and rearranging them, and then mapping back to letters.</li>
+                    <li>Example: With the plaintext 'HELLO', using the Polybius square, you might get coordinates, split and rearrange them, and then map them back to encrypted text.</li>
+                </ul>
             </>
         );
         ongetInfo(info);

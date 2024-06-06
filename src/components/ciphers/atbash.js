@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
 
-export default function AtbashEncoder({ ongetInfo,onEncryptInfo,onDecryptInfo}) {
-    const [inputText, setInputText] = useState('');
-    const [inputChars, setInputChars] = useState([]);
-    const [outputChars, setOutputChars] = useState([]);
+export default function AtbashEncoder({ ongetInfo}) {
+
 
     const encode = (text) => {
 
         let encoded = '';
-        const encodedChars = [];
-        const decodedChars = [];
+       
 
         for (let i = 0; i < text.length; i++) {
             const charCode = text.charCodeAt(i);
@@ -25,13 +22,8 @@ export default function AtbashEncoder({ ongetInfo,onEncryptInfo,onDecryptInfo}) 
             }
 
             encoded += encodedChar;
-            encodedChars.push(encodedChar);
-            decodedChars.push(text[i]);
         }
 
-        setInputText(text);
-        setInputChars([...inputChars, text]);
-        setOutputChars([...outputChars, encoded]);
 
         return encoded;
     };
@@ -40,34 +32,7 @@ export default function AtbashEncoder({ ongetInfo,onEncryptInfo,onDecryptInfo}) 
         return encode(text);
     };
 
-    const encryptInfo=()=>{
-        const info=(
-            <>
-        <li>Steps are as follows:- </li>
-        {
-            inputChars.map((value ,index)=>(
-                <li>For the alphabet {value} we are getting {outputChars[index]}</li>
-            ))
-        }
-        </>
-        );
-        onEncryptInfo(info)
-    }
-
-    const decryptInfo=()=>{
-        const info=(
-            <>
-        <li>Steps are as follows:- </li>
-        {
-            inputChars.map((value ,index)=>(
-                <li>For the alphabet {value} we are getting {outputChars[index]}</li>
-            ))
-        }
-        </>
-        );
-        onDecryptInfo(info)
-    }
-
+    
     const showInformation = () => {
         const info = (
             <>
@@ -91,15 +56,7 @@ export default function AtbashEncoder({ ongetInfo,onEncryptInfo,onDecryptInfo}) 
         showInformation();
     }, []);
 
-    React.useEffect(() => {
-        encryptInfo();
-    }, [inputText]);
-
-
-    React.useEffect(() => {
-        decryptInfo();
-    }, [inputText]);
-
+    
 
     return (
 

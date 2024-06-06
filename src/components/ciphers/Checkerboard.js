@@ -79,18 +79,20 @@ function decode(ciphertext, keyword) {
         const info = (
             <>
                 <p>
-    The Autokey Cipher is a substitution cipher that extends the Vigenère cipher. It utilizes a key that is as long as the plaintext, making it a polyalphabetic substitution cipher.
-</p>
-<p>
-    To encrypt using the Autokey Cipher, each character of the plaintext is combined with a character from the key to produce the ciphertext.
-</p>
-<ul>
-    <li>Substitution Cipher: Each character in the plaintext is replaced by a character derived from a combination of the plaintext and the key.</li>
-    <li>Key Length: The key used in the Autokey Cipher is as long as the plaintext, extending the Vigenère cipher's key.</li>
-    <li>Encryption: To encrypt, each character in the plaintext is combined with a character from the key using a mathematical operation, typically modular addition.</li>
-    <li>Decryption: Decryption involves reversing the encryption process, subtracting the key character from the ciphertext character to retrieve the plaintext character.</li>
-    <li>Example: Using a key 'KEY', if 'H' in the plaintext is combined with 'K' from the key, the resulting ciphertext character might be 'S'.</li>
-</ul>
+                    The Checkerboard Cipher, also known as the Masonic Cipher or the Baconian Cipher, is a binary encoding scheme.
+                    It replaces characters in the plaintext with a binary representation based on their position in a grid.
+                </p>
+                <p>
+                    To encrypt using the Checkerboard Cipher, you first need a grid with predefined categories (e.g., letters, numbers, symbols).
+                    Each character in the plaintext is then replaced with its corresponding binary representation based on its position in the grid.
+                </p>
+                <ul>
+                    <li>Binary Encoding: Characters in the plaintext are replaced with binary representations.</li>
+                    <li>Checkerboard Grid: The grid contains categories like letters, numbers, or symbols, arranged in rows and columns.</li>
+                    <li>Encoding Process: Each character is replaced with its binary representation based on its position in the grid.</li>
+                    <li>Decoding: Decryption involves converting binary strings back to their corresponding characters based on the grid.</li>
+                    <li>Example: A common grid includes letters A-Z and digits 0-9. 'A' might correspond to '00', 'B' to '01', and so on.</li>
+                </ul>
             </>
         );
         ongetInfo(info);

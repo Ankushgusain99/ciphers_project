@@ -102,25 +102,26 @@ export default function CipherAscii({ ongetInfo }) {
     }
 
     const showInformation = () => {
-        const info = (
-            <>
-                <p>
-                    The ASCII Cipher is a simple character substitution cipher based on the ASCII encoding standard. 
-                    Each character in the plaintext is replaced with its corresponding ASCII value.
-                </p>
-                <p>
-                    To encrypt using the ASCII Cipher, simply convert each character of your text to its ASCII value.
-                </p>
-                <ul>
-                    <li>Substitution Cipher: Each character in the plaintext is replaced by its corresponding ASCII value.</li>
-                    <li>ASCII Encoding: ASCII (American Standard Code for Information Interchange) is a character encoding standard that represents text in computers and other devices.</li>
-                    <li>Encryption: To encrypt, convert each character in the plaintext to its ASCII value.</li>
-                    <li>Decryption: Decryption involves converting each ASCII value back to its corresponding character.</li>
-                    <li>Example: 'A' becomes '65', 'B' becomes '66', 'C' becomes '67', and so forth.</li>
-                </ul>
-            </>
-        );
-        ongetInfo(info);
+      const info = (
+        <>
+            <p>
+                The AMSCO Cipher is a variant of the fractionated transposition cipher. 
+                It is based on splitting the plaintext into groups of 1 or 2 letters and then applying a transposition pattern.
+            </p>
+            <p>
+                To encrypt using the AMSCO Cipher, you divide the plaintext into alternating single and double letters, 
+                then transpose the groups based on a key pattern.
+            </p>
+            <ul>
+                <li>Fractionated Transposition Cipher: The text is divided into groups of 1 or 2 letters before transposition.</li>
+                <li>Key Pattern: A keyword is used to create a numerical key pattern that determines the order of transposition.</li>
+                <li>Encryption: To encrypt, first divide the plaintext into 1 or 2 letter groups, then reorder these groups according to the key pattern.</li>
+                <li>Decryption: Decryption involves reversing the transposition using the same key pattern, and then reassembling the text.</li>
+                <li>Example: With the key '3214' and plaintext 'HELLO WORLD', you might split it as 'H E LL O WO RL D' and then transpose the groups based on the key.</li>
+            </ul>
+        </>
+    );
+    ongetInfo(info);
     };
 
     React.useEffect(() => {

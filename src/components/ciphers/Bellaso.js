@@ -37,19 +37,20 @@ export default function BellasoCipher({ ongetInfo }) {
         const info = (
             <>
                 <p>
-    The Beaufort Cipher is a variant of the Vigenère cipher, employing a reversed alphabet key to encrypt and decrypt messages.
-</p>
-<p>
-    To encrypt using the Beaufort Cipher, each character of the plaintext is combined with a character from the key to produce the ciphertext.
-</p>
-<ul>
-    <li>Substitution Cipher: The Beaufort Cipher substitutes each plaintext character with a character determined by a combination of the plaintext and the key.</li>
-    <li>Key Length: Similar to the Vigenère cipher, the key length in the Beaufort Cipher matches the length of the plaintext.</li>
-    <li>Encryption: To encrypt, each character in the plaintext is combined with a character from the key using a mathematical operation, typically modular subtraction or reversing the alphabet.</li>
-    <li>Decryption: Decryption in the Beaufort Cipher involves reversing the encryption process by subtracting the key character from the ciphertext character to retrieve the plaintext character.</li>
-    <li>Example: For instance, using a key 'KEY', if 'H' in the plaintext is combined with 'K' from the key, the resulting ciphertext character might be 'S'.</li>
-</ul>
-
+                    The Bellaso Cipher, also known as the Vigenère cipher, is a method of encrypting alphabetic text by using a simple form of polyalphabetic substitution. 
+                    It uses a keyword to apply a series of Caesar ciphers to the plaintext.
+                </p>
+                <p>
+                    To encrypt using the Bellaso Cipher, a keyword is repeated so that it matches the length of the plaintext. 
+                    Each letter of the plaintext is then shifted along some number of places dictated by the corresponding letter of the keyword.
+                </p>
+                <ul>
+                    <li>Polyalphabetic Substitution Cipher: Multiple Caesar ciphers are used based on the letters of a keyword.</li>
+                    <li>Key Pattern: A keyword is chosen and repeated to match the length of the plaintext.</li>
+                    <li>Encryption: To encrypt, shift each letter in the plaintext by the number of positions indicated by the corresponding letter of the keyword.</li>
+                    <li>Decryption: Decryption involves reversing the shifts using the same keyword.</li>
+                    <li>Example: With the keyword 'KEY' and plaintext 'HELLO', the keyword is repeated to 'KEYKE', and each letter of 'HELLO' is shifted according to 'KEYKE'.</li>
+                </ul>
             </>
         );
         ongetInfo(info);

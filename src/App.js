@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Layout, Menu, Typography, Watermark, Spin } from 'antd';
+import {Popover ,Layout, Menu, Typography, Watermark, Spin } from 'antd';
 
 import lodash from 'lodash'
 import AtbashCipher from "./components/ciphers/atbash"
@@ -28,28 +28,26 @@ const { Title } = Typography;
 
 const App = () => {
   const [showInfo, setShowInfo] = useState(false);
-  const [showEncrypt,setShowEncrypt]=useState(false)
-  const [showDecrypt,setShowDecrypt]=useState(false)
   const [cipherInfo, setCipherInfo] = useState('');
-  const [encryptInfo, setEncryptInfo] = useState('');
-  const [decryptInfo, setDecryptInfo] = useState('');
+  //const [encryptInfo, setEncryptInfo] = useState('');
+  //const [decryptInfo, setDecryptInfo] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [content, setContent] = useState('');
+  const toggleInfo = () => {
+    setContent(cipherInfo);
+    setVisible(true);
+  }
 
-  const toggleInfo=()=>{
-      setShowInfo(!showInfo)
-
+  const hidePopover = () => {
+    setVisible(false);
   }
-  const toggleEncrypt=()=>{
-      setShowEncrypt(!showEncrypt)
-  }
-  const toggleDecrypt=()=>{
-    setShowDecrypt(!showDecrypt)
-  }
+  
 
   const items = [
-    ['Caesar Cipher', <CaesarCipher ongetInfo={setCipherInfo} onEncryptInfo={setEncryptInfo} onDecryptInfo={setDecryptInfo}/>],
-    ['Atbash Cipher', <AtbashCipher ongetInfo={setCipherInfo} onEncryptInfo={setEncryptInfo} onDecryptInfo={setDecryptInfo} />],
-    ['Binary Conversion', <BinaryEncoding ongetInfo={setCipherInfo} onEncryptInfo={setEncryptInfo} onDecryptInfo={setDecryptInfo}/>],
-    ['Affine Cipher', <AffineCipher ongetInfo={setCipherInfo} onEncryptInfo={setEncryptInfo} onDecryptInfo={setDecryptInfo} />],
+    ['Caesar Cipher', <CaesarCipher ongetInfo={setCipherInfo} />],
+    ['Atbash Cipher', <AtbashCipher ongetInfo={setCipherInfo} />],
+    ['Binary Conversion', <BinaryEncoding ongetInfo={setCipherInfo} />],
+    ['Affine Cipher', <AffineCipher ongetInfo={setCipherInfo} />],
     ['Cipher Ascii', <CipherAscii ongetInfo={setCipherInfo}/>],
     ['AMSCO Cipher',<AMSCO ongetInfo={setCipherInfo}/>],
     ['AutoKey Cipher',<AutoKey ongetInfo={setCipherInfo} />],
@@ -88,22 +86,25 @@ const App = () => {
       <Content style={{ padding: '50px'}}>
       <div style={{ display: 'flex', justifyContent:'center', alignItems: 'center' }}>
               <Title style={{ textAlign: 'center', margin: 0 }} underline level={1} type={lodash.sample(['danger', 'success', 'warning'])}>{title}</Title>
-              
-                <InfoCircleOutlined height={'2em'} onClick={() => { toggleInfo()}} style={{ marginTop:'20px',marginLeft:'3px' }}/>
-                <button onClick={()=>{toggleEncrypt()}}>Show Encrypt</button>
-                <button onClick={()=>{toggleDecrypt()}}>Show Decrypt</button>
+              <Popover 
+                content={content}
+                visible={visible}
+                onVisibleChange={(v) => setVisible(v)}
+              >
+                <span 
+                  onMouseEnter={toggleInfo}
+                  onMouseLeave={hidePopover}
+                >
+                  <InfoCircleOutlined style={{ marginTop: '20px', marginLeft: '3px', height: '2em' }} />
+                </span>
+              </Popover>
 
             
             </div>
       {
         showInfo&& <p>{cipherInfo}</p>
       }
-      {
-        showEncrypt && <p>{encryptInfo}</p>
-      }
-      {
-        showDecrypt && <p>{decryptInfo}</p>
-      }
+      
         <div>
           {comp}
         </div>

@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
 
-export default function CaesarCipher({ongetInfo,onEncryptInfo,onDecryptInfo}) {
-    const [inputText, setInputText] = useState('');
-    const [inputChars, setInputChars] = useState([]);
-    const [outputChars, setOutputChars] = useState([]);
-    const[key,setKey]=useState([])
+export default function CaesarCipher({ongetInfo}) {
+
     // Create a function to encode a string using the Caesar cipher
     function encode(str, shift) {
         let encodedChars = '';
@@ -23,12 +20,8 @@ export default function CaesarCipher({ongetInfo,onEncryptInfo,onDecryptInfo}) {
             }
     
             encodedChars += char;
-            setKey(shift)
         }
     
-        setInputText(str);
-        setInputChars([...inputChars, str]);
-        setOutputChars([...outputChars, encodedChars]);
     
         return encodedChars;
     }
@@ -39,33 +32,7 @@ export default function CaesarCipher({ongetInfo,onEncryptInfo,onDecryptInfo}) {
         return encode(str, -shift);
     }
 
-    const encryptInfo=()=>{
-        const info=(
-            <>
-        <li>Steps are as follows:- </li>
-        {
-            inputChars.map((value ,index)=>(
-                <li>For the alphabet {value} we are getting {outputChars[index]} after adding key which is {key} to the last index</li>
-            ))
-        }
-        </>
-        );
-        onEncryptInfo(info)
-    }
-
-    const decryptInfo=()=>{
-        const info=(
-            <>
-        <li>Steps are as follows:- </li>
-        {
-            inputChars.map((value ,index)=>(
-                <li>For the alphabet {value} we are getting {outputChars[index]} after subtracting key which is {key} to the last index</li>
-            ))
-        }
-        </>
-        );
-        onDecryptInfo(info)
-    }
+    
 
     const showInformation = () => {
         const info = (
@@ -89,13 +56,6 @@ export default function CaesarCipher({ongetInfo,onEncryptInfo,onDecryptInfo}) {
         showInformation();
     }, []);
 
-    React.useEffect(() => {
-        encryptInfo();
-    }, [inputText,key]);
-
-    React.useEffect(() => {
-        decryptInfo();
-    }, [inputText,key]);
 
     return( 
     <>

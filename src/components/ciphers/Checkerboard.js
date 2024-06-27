@@ -1,7 +1,7 @@
 import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
 
-export default function Checkerboard({ ongetInfo }) {
+export default function Checkerboard() {
 
     function generateCheckerboardSquare(keyword) {
         keyword = keyword.toUpperCase().replace(/J/g, "I");
@@ -75,33 +75,7 @@ function decode(ciphertext, keyword) {
 
 
 
-    const showInformation = () => {
-        const info = (
-            <>
-                <p>
-                    The Checkerboard Cipher, also known as the Masonic Cipher or the Baconian Cipher, is a binary encoding scheme.
-                    It replaces characters in the plaintext with a binary representation based on their position in a grid.
-                </p>
-                <p>
-                    To encrypt using the Checkerboard Cipher, you first need a grid with predefined categories (e.g., letters, numbers, symbols).
-                    Each character in the plaintext is then replaced with its corresponding binary representation based on its position in the grid.
-                </p>
-                <ul>
-                    <li>Binary Encoding: Characters in the plaintext are replaced with binary representations.</li>
-                    <li>Checkerboard Grid: The grid contains categories like letters, numbers, or symbols, arranged in rows and columns.</li>
-                    <li>Encoding Process: Each character is replaced with its binary representation based on its position in the grid.</li>
-                    <li>Decoding: Decryption involves converting binary strings back to their corresponding characters based on the grid.</li>
-                    <li>Example: A common grid includes letters A-Z and digits 0-9. 'A' might correspond to '00', 'B' to '01', and so on.</li>
-                </ul>
-            </>
-        );
-        ongetInfo(info);
-    };
-
-    React.useEffect(() => {
-        showInformation();
-    }, []);
-
+    
     return <CipherFactory encode={encode} decode={decode} keyComponentA={'STR'} />
 };
 

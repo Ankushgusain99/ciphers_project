@@ -1,7 +1,7 @@
 import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
 
-export default function BaconianCipher({ongetInfo}) {
+export default function BaconianCipher() {
 
   // Encryption function for Baconian Cipher
   function baconianEncrypt(plaintext) {
@@ -111,30 +111,6 @@ export default function BaconianCipher({ongetInfo}) {
     return plaintext;
   }
   
-  const showInformation = () => {
-    const info = (
-        <>
-            <p>
-The Baconian Cipher is a substitution cipher that replaces each letter of the plaintext with a five-character binary string. It uses a binary encoding scheme to represent letters of the alphabet.
-</p>
-<p>
-To encode using the Baconian Cipher, each letter of the plaintext is replaced by a five-character binary string according to a predefined encoding table. Typically, one set of characters is used to represent one binary digit (e.g., 'A' or 'B').
-</p>
-<ul>
-<li>Substitution Cipher: Each letter in the plaintext is replaced by a five-character binary string.</li>
-<li>Binary Encoding: The Baconian Cipher utilizes a binary encoding scheme to represent letters, with each character typically representing one binary digit.</li>
-<li>Encoding Table: A predefined encoding table maps each letter of the alphabet to its corresponding five-character binary string.</li>
-<li>Example: The plaintext letter 'A' might be encoded as "AAAAA" and 'B' as "AAAAB".</li>
-</ul>
-
-        </>
-    );
-    ongetInfo(info);
-};
-
-React.useEffect(() => {
-    showInformation();
-}, []);
-
+  
   return <CipherFactory encode={baconianEncrypt} decode={baconianDecrypt} />
 };

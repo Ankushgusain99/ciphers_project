@@ -1,9 +1,15 @@
 import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
-
-export default function AutoKey({ ongetInfo }) {
+import CipherOverview from '../../ui/CipherOverview';
+import { Header,
+    Description,
+    Example,
+    References } from '../../overviews/AutoKeyOverview';
+export default function AutoKey() {
+    const [showOverview, setShowOverview] = React.useState(false);
     // Function to encrypt plaintext using the Autokey cipher
 function encode(plaintext, key) {
+    
     let ciphertext = '';
     let keyIndex = 0;
 
@@ -60,32 +66,27 @@ function decode(ciphertext, key) {
 
 
 
-    const showInformation = () => {
-        const info = (
-            <>
-                <p>
-    The Autokey Cipher is a substitution cipher that extends the Vigenère cipher. It utilizes a key that is as long as the plaintext, making it a polyalphabetic substitution cipher.
-</p>
-<p>
-    To encrypt using the Autokey Cipher, each character of the plaintext is combined with a character from the key to produce the ciphertext.
-</p>
-<ul>
-    <li>Substitution Cipher: Each character in the plaintext is replaced by a character derived from a combination of the plaintext and the key.</li>
-    <li>Key Length: The key used in the Autokey Cipher is as long as the plaintext, extending the Vigenère cipher's key.</li>
-    <li>Encryption: To encrypt, each character in the plaintext is combined with a character from the key using a mathematical operation, typically modular addition.</li>
-    <li>Decryption: Decryption involves reversing the encryption process, subtracting the key character from the ciphertext character to retrieve the plaintext character.</li>
-    <li>Example: Using a key 'KEY', if 'H' in the plaintext is combined with 'K' from the key, the resulting ciphertext character might be 'S'.</li>
-</ul>
-            </>
-        );
-        ongetInfo(info);
-    };
-
-    React.useEffect(() => {
-        showInformation();
-    }, []);
-
-    return <CipherFactory encode={encode} decode={decode} keyComponentA={'STR'} />
+    
+return (
+    <>
+      {showOverview && (
+        <CipherOverview
+          setShowOverview={setShowOverview}
+          Header={Header}
+          Description={Description}
+          Example={Example}
+          References={References}
+        />
+      )}
+      <CipherFactory
+        title={"AutoKey Cipher"}
+        setShowOverview = {setShowOverview}
+        encode={encode}
+        decode={decode}
+        keyComponentA={'STR'}
+      />
+    </>
+  );
 };
 
 

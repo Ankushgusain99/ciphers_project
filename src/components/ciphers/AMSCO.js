@@ -1,7 +1,10 @@
 import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
+import CipherOverview from '../../ui/CipherOverview';
+import { Header,Description,References,Example } from '../../overviews/AMSCOOverview';
+export default function AMSCO() {
+  const [showOverview, setShowOverview] = React.useState(false);
 
-export default function CipherAscii({ ongetInfo }) {
     // Function to generate the transposition grid based on the keyword
     // Function to generate the transposition grid based on the keyword
 
@@ -101,32 +104,25 @@ export default function CipherAscii({ ongetInfo }) {
   return decryptedText;
     }
 
-    const showInformation = () => {
-      const info = (
-        <>
-            <p>
-                The AMSCO Cipher is a variant of the fractionated transposition cipher. 
-                It is based on splitting the plaintext into groups of 1 or 2 letters and then applying a transposition pattern.
-            </p>
-            <p>
-                To encrypt using the AMSCO Cipher, you divide the plaintext into alternating single and double letters, 
-                then transpose the groups based on a key pattern.
-            </p>
-            <ul>
-                <li>Fractionated Transposition Cipher: The text is divided into groups of 1 or 2 letters before transposition.</li>
-                <li>Key Pattern: A keyword is used to create a numerical key pattern that determines the order of transposition.</li>
-                <li>Encryption: To encrypt, first divide the plaintext into 1 or 2 letter groups, then reorder these groups according to the key pattern.</li>
-                <li>Decryption: Decryption involves reversing the transposition using the same key pattern, and then reassembling the text.</li>
-                <li>Example: With the key '3214' and plaintext 'HELLO WORLD', you might split it as 'H E LL O WO RL D' and then transpose the groups based on the key.</li>
-            </ul>
-        </>
+    
+    return (
+      <>
+        {showOverview && (
+          <CipherOverview
+            setShowOverview={setShowOverview}
+            Header={Header}
+            Description={Description}
+            Example={Example}
+            References={References}
+          />
+        )}
+        <CipherFactory
+          title={"AMSCO Cipher"}
+          setShowOverview = {setShowOverview}
+          encode={encode}
+          decode={decode}
+          keyComponentA={'STR'}
+        />
+      </>
     );
-    ongetInfo(info);
-    };
-
-    React.useEffect(() => {
-        showInformation();
-    }, []);
-
-    return <CipherFactory encode={encode} decode={decode} keyComponentA={'STR'} />
 };

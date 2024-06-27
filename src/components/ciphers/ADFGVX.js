@@ -2,7 +2,7 @@ import React from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
 
 
-export default function ADFGVX({ongetInfo}) {
+export default function ADFGVX() {
 
     const polybiusSquare = [
         ['A', 'D', 'F', 'G', 'V', 'X'],
@@ -118,33 +118,6 @@ export default function ADFGVX({ongetInfo}) {
     
         return plaintext;
     }      
-  const showInformation = () => {
-    const info = (
-        <>
-            <p>
-                The ADFGVX Cipher is a fractionated cipher used by the German Army during World War I. 
-                It is a combination of a modified Polybius square and a single columnar transposition.
-            </p>
-            <p>
-                To encrypt using the ADFGVX Cipher, you first substitute the plaintext using a Polybius square, 
-                then transpose the resulting fractionated ciphertext using a key.
-            </p>
-            <ul>
-                <li>Polybius Square: A 6x6 grid that includes the letters ADFGVX along the rows and columns. Each cell contains a letter of the alphabet or a digit.</li>
-                <li>Substitution Step: Each letter of the plaintext is replaced by its coordinates in the Polybius square, resulting in a pair of ADFGVX letters.</li>
-                <li>Transposition Step: The resulting pairs are written out in rows under the columns labeled with the key, and then the columns are rearranged according to the key.</li>
-                <li>Encryption: Convert each plaintext character to a pair of ADFGVX letters, then reorder the pairs based on the transposition key.</li>
-                <li>Decryption: Reverse the transposition to obtain the fractionated ciphertext, then use the Polybius square to get back the plaintext.</li>
-                <li>Example: With the key 'KEYWORD' and plaintext 'HELLO', you might substitute 'H' as 'AF', 'E' as 'DG', etc., and then transpose the pairs based on the key.</li>
-            </ul>
-        </>
-    );
-    ongetInfo(info);
-};
-
-React.useEffect(() => {
-    showInformation();
-}, []);
-
+ 
       return <CipherFactory encode={encode} decode={decode} keyComponentA={'STR'} keyComponentB={'STR'} />
 };

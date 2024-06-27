@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import CipherFactory from '../../ui/EncryptDecrypt';
-
-export default function AffineCipher({ ongetInfo }) {
+import CipherOverview from '../../ui/CipherOverview';
+import { Header,Description,References,Example } from '../../overviews/AffineOverview';
+export default function AffineCipher() {
+    const [showOverview, setShowOverview] = useState(false);
         const[values,setValues]=useState(-1)
         
         // Function to encrypt a message using the affine cipher
-        function encryptAffine(message, a, b) {
+        function encode(message, a, b) {
             // Convert message to uppercase and remove all spaces and special characters\
             message = message.toUpperCase().replace(/[^A-Z]/g, '');
             let result = '';
@@ -22,7 +24,7 @@ export default function AffineCipher({ ongetInfo }) {
         }
     
         // Function to decrypt a message using the affine cipher
-        function decryptAffine(ciphertext, a, b) {
+        function decode(ciphertext, a, b) {
             let result = '';
             // Find the modular multiplicative inverse of a
             for (let i = 0; i < 26; i++) {
@@ -47,39 +49,27 @@ export default function AffineCipher({ ongetInfo }) {
 
     
 
-    const showInformation = () => {
-        const info = (
-            <>
-                <p>
-                    The Affine Cipher is a type of monoalphabetic substitution cipher, where each letter in an alphabet is mapped to its numeric equivalent, encrypted using a simple mathematical function, and then converted back to a letter.
-                </p>
-                <p>
-                    The encryption function for the Affine Cipher takes the form of:
-                    <br />
-                    <strong>C = (a * P + b) % 26</strong>
-                </p>
-                <ul>
-                    <li>Monoalphabetic Substitution Cipher: Each letter of the plaintext is replaced by a corresponding letter of the ciphertext.</li>
-                    <li>Mathematical Function: The encryption function involves multiplying the plaintext letter's numerical value by a constant 'a', adding a constant 'b', and then taking the result modulo 26.</li>
-                    <li>Decryption: Decryption involves applying the inverse function to convert the ciphertext back to plaintext.</li>
-                    <li>Key: The key for the Affine Cipher consists of two numbers, 'a' and 'b', where 'a' must be chosen such that 'a' and the length of the alphabet are coprime.</li>
-                    <li>Example: With the key (a=5, b=8), 'HELLO' might become 'ZOOPM'.</li>
-                </ul>
-            </>
-        );
-        ongetInfo(info);
-    };
-
-    // Call the showInformation function when the component mounts
-    React.useEffect(() => {
-        showInformation();
-    }, []);
-
+    
 
     return (
         <>
-            
-            <CipherFactory encode={encryptAffine} decode={decryptAffine} keyComponentA="Key A" keyComponentB="Key B" />
+          {showOverview && (
+            <CipherOverview
+              setShowOverview={setShowOverview}
+              Header={Header}
+              Description={Description}
+              Example={Example}
+              References={References}
+            />
+          )}
+          <CipherFactory
+            title={"Affine Cipher"}
+            setShowOverview = {setShowOverview}
+            encode={encode}
+            decode={decode}
+            keyComponentA={1}
+            keyComponentB={1}
+          />
         </>
-    );
+      );
 };
